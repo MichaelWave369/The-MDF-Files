@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d0c">
+  <meta name="description" content="The MDF Files: a fictional field technician horror archive of cursed cable labels, nightmare work orders, pay scopes, paperwork portals, and network closet madness.">
+  <meta property="og:title" content="THE MDF FILES · Network Technician Horror Archive">
+  <meta property="og:description" content="The truth is in the patch panel. Fictional field-tech horror stories, ticket generator, bingo, and paperwork simulator.">
+  <meta property="og:type" content="website">
+  
+  <style>:root {
+  color-scheme: dark;
+  --bg: #080d0c;
+  --surface: #101918;
+  --surface2: #14201d;
+  --panel: #0e1514;
+  --line: #263b34;
+  --line-soft: #1c302a;
+  --acid: #b8f654;
+  --acid-dark: #1b2d13;
+  --white: #f5f6ef;
+  --muted: #97aaa1;
+  --muted2: #6c8579;
+  --orange: #ffc16b;
+  --red: #ff7971;
+  --font-display: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-body: 'Arial', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
+  background: var(--bg); color: var(--white);
+  font-synthesis: none; -webkit-font-smoothing: antialiased;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{margin:0;min-width:320px;overflow-x:hidden}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.56}
+:focus-visible{outline:2px solid var(--acid);outline-offset:3px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3,h4{font-weight:800}
+::selection{background:var(--acid);color:#0b1110}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+[hidden]{display:none!important}
+.skip-link{position:absolute;z-index:999;left:12px;top:-60px;background:var(--acid);color:#071009;padding:12px}
+.skip-link:focus{top:12px}
+.site-header{height:80px;border-bottom:1px solid #28392f;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 max(4.7%,calc((100vw - 1450px)/2));background:#0a1110;position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand-icon{height:43px;width:43px;border:2px solid var(--acid);background:#1b301f;color:var(--acid);display:grid;place-items:center;font-size:30px;font-family:var(--font-mono);box-shadow:5px 5px 0 #243b21}
+.brand strong{display:block;font-family:var(--font-display);letter-spacing:1px;font-size:25px;line-height:1}
+.brand-dot,.footer-logo span{color:var(--acid)}
+.brand small{display:block;letter-spacing:2.3px;font-size:9px;color:var(--muted);margin-top:6px;font-family:var(--font-mono)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:#bac9bf;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.nav-links a:hover{color:var(--acid)}
+.nav-action{color:#0e170d;background:var(--acid);font:800 11px var(--font-mono);padding:13px 17px;white-space:nowrap}
+.nav-action:hover{background:#d7ff90}
+.nav-action span{font-size:15px;margin-left:10px}
+.hero{min-height:590px;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);padding:75px max(5%,calc((100vw - 1450px)/2)) 80px;overflow:hidden;background:radial-gradient(circle at 75% 35%,#1a3d29a0,transparent 44%),linear-gradient(160deg,#0e1714,#080d0c 65%)}
+.hero:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#5f86600b 1px,transparent 1px),linear-gradient(90deg,#5f86600b 1px,transparent 1px);background-size:43px 43px;mask-image:linear-gradient(to right,transparent,black)}
+.hero-noise{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 4px,#b2e9c902 5px);opacity:.6}
+.hero-copy{z-index:2;position:relative;padding-top:28px;max-width:750px}
+.eyebrow,.kicker{font:800 11px var(--font-mono);letter-spacing:2.1px;color:var(--acid);display:flex;align-items:center;gap:10px}
+.live-dot{height:7px;width:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:blink 1.9s infinite}
+.sep{color:#51695a}
+.hero h1{font:900 clamp(95px,10.9vw,175px)/.79 var(--font-display);letter-spacing:2px;margin:33px 0 31px;text-shadow:8px 8px 0 #1e3329}
+.hero h1 span{color:var(--acid)}
+.hero h1 .punct{color:#75954a;font-size:.85em;animation:blink 1.3s steps(1) infinite}
+.hero-sub{font:800 15px var(--font-mono);letter-spacing:2.1px;margin:0 0 17px;color:var(--white)}
+.hero-text{font-size:15px;line-height:1.85;color:#b2c1b7;max-width:530px;margin-bottom:27px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.button{border:1px solid #4e6553;background:transparent;color:var(--white);min-height:46px;padding:0 19px;display:inline-flex;align-items:center;justify-content:center;gap:13px;font:800 12px var(--font-mono);letter-spacing:.1px;text-align:center;transition:background .16s,border-color .16s,transform .16s}
+.button:hover:not(:disabled){transform:translateY(-2px)}
+.button-acid{background:var(--acid);color:#0d170a;border-color:var(--acid)}
+.button-acid:hover:not(:disabled){background:#d6ff98}
+.button-outline{border-color:#67816d;color:#eff6e8}
+.button-outline:hover:not(:disabled){background:#263a2c;border-color:var(--acid)}
+.button-dark{background:#1b2a24;color:#d2e5d4;border-color:#3a5742}
+.button-dark:hover:not(:disabled){border-color:var(--acid);background:#2a402d}
+.hero-disclaimer{display:flex;align-items:center;gap:8px;color:#869b8d;font:11px var(--font-mono);margin-top:24px}
+.hero-disclaimer span{color:var(--acid)}
+.hero-art{position:relative;min-width:0;z-index:1;align-self:center;height:400px;max-width:690px;margin-left:-6px;transform:rotate(-5deg)}
+.orbit{position:absolute;border:1px dashed #6c9a4969;border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%)}
+.orbit-one{width:500px;height:500px}.orbit-two{width:365px;height:365px}
+.rack-top{height:38px;background:#253832;border:2px solid #66826a;color:#aec2ae;font:10px var(--font-mono);display:flex;align-items:center;justify-content:space-between;padding:0 17px;position:absolute;left:15px;right:15px;top:91px;box-shadow:7px 8px 0 #020807}
+.rack-top-light{width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.rack-box{position:absolute;left:10px;right:10px;top:130px;height:146px;background:linear-gradient(150deg,#23322f,#0d1616);border:6px solid #3e5751;box-shadow:8px 14px 0 #020605,0 0 0 2px #78917a,inset 0 5px 15px #0008;padding:15px 18px}
+.rack-head{display:flex;align-items:center;gap:10px;color:#c6d5c8;font:800 11px var(--font-mono);letter-spacing:2px}
+.rack-head>span{font-size:20px;color:var(--acid)}
+.rack-head small{margin-left:auto;font:9px var(--font-mono);color:var(--orange)}
+.rack-ports{display:flex;justify-content:space-between;gap:6px;margin-top:20px}
+.port{display:block;flex:1;max-width:47px;height:36px;background:linear-gradient(#020b0a,#132420);border:3px solid #738477;box-shadow:inset 0 5px #06100d;position:relative}
+.port:after{content:'';height:5px;position:absolute;left:4px;right:4px;bottom:5px;background:#253c30}
+.port.live:before,.port.amber:before{content:'';position:absolute;top:-11px;left:50%;width:6px;height:5px;background:var(--acid);box-shadow:0 0 8px var(--acid)}
+.port.amber:before{background:var(--orange);box-shadow:0 0 8px var(--orange)}
+.rack-lights{display:flex;justify-content:flex-end;gap:14px;color:#91a596;font:9px var(--font-mono);margin-top:12px}
+.rack-lights>span{display:flex;align-items:center;gap:6px}.light{display:inline-block;border-radius:50%;width:7px;height:7px}.light.green{background:var(--acid);box-shadow:0 0 8px var(--acid)}.light.red{background:var(--red);box-shadow:0 0 8px var(--red)}
+.cable{position:absolute;top:254px;width:6px;border:5px solid transparent;border-right-color:#76b37c;border-bottom-color:#76b37c;border-radius:0 0 100px 0;height:130px;z-index:0}
+.cable-a{left:28%;transform:rotate(-10deg);height:120px;width:80px}.cable-b{left:48%;border-right-color:#d68b58;border-bottom-color:#d68b58;transform:rotate(8deg);height:140px;width:100px}.cable-c{left:68%;border-right-color:#6e94aa;border-bottom-color:#6e94aa;transform:rotate(18deg);height:125px;width:90px}
+.label-sticker{position:absolute;z-index:4;left:17%;right:13%;top:232px;background:#e6e4ce;color:#0a0f0c;border:5px solid #161b17;box-shadow:8px 12px 0 #010403;padding:13px 15px 9px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center}
+.label-sticker>span{font:800 11px var(--font-mono);letter-spacing:2px;border-bottom:2px solid #151e16;padding-bottom:6px}
+.label-sticker strong{font:900 clamp(29px,3.8vw,55px)/1.12 var(--font-display);letter-spacing:1px;white-space:nowrap;margin:7px 0 5px}
+.label-sticker small{font:10px var(--font-mono);letter-spacing:1px}
+.incident-chip{position:absolute;z-index:4;right:-1%;top:25px;font:11px var(--font-mono);background:var(--orange);color:#21170b;padding:11px 14px;transform:rotate(9deg)}.incident-chip strong{margin-left:9px}
+.rack-caption{position:absolute;bottom:-25px;left:25%;font:10px var(--font-mono);color:#738777;transform:rotate(5deg);white-space:nowrap}
+.hazard{position:absolute;right:7px;bottom:25px;color:var(--orange);font-size:35px;transform:rotate(15deg)}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;min-height:44px;background:#17261e;border-top:1px solid #3a593b;display:flex;gap:18px;align-items:center;justify-content:space-between;padding:0 max(5%,calc((100vw - 1450px)/2));font:10px var(--font-mono);letter-spacing:1px;color:#8eae91}.hero-bottom b{color:var(--acid)}
+.ticker{height:51px;display:flex;align-items:center;overflow:hidden;background:var(--acid);color:#14230e;border-bottom:3px solid #497324}
+.ticker-track{display:flex;align-items:center;flex-wrap:nowrap;gap:40px;width:max-content;animation:marquee 37s linear infinite;font:800 13px var(--font-mono);white-space:nowrap;letter-spacing:1px}
+.ticker-track span{flex-shrink:0}
+.section{max-width:1480px;margin:auto;padding:98px 5% 12px}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:34px}
+.kicker{margin-bottom:17px;font-size:10px}
+.section-header h2,.feature-intro h2,.contribute-layout h2{font:900 clamp(36px,4.2vw,64px)/.99 var(--font-display);letter-spacing:1px;margin-bottom:15px}
+.section-header h2 span,.feature-intro h2 span,.contribute-layout h2 span{color:var(--acid)}
+.section-header p:not(.kicker),.feature-intro>p:not(.kicker),.contribute-layout p:not(.kicker){font-size:14px;line-height:1.8;max-width:630px;color:var(--muted);margin-bottom:0}
+.stamp{display:inline-flex;gap:7px;align-items:center;white-space:nowrap;border:1px solid #577247;background:#14291c;color:#9eafa1;padding:10px 12px;font:10px var(--font-mono);transform:rotate(2deg)}.stamp b{color:var(--acid)}.stamp.danger{border-color:#8b5046;background:#2c1c1b}.stamp.danger b{color:var(--red)}
+.archive-controls{border-bottom:1px solid var(--line);padding-bottom:20px;display:flex;gap:17px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;flex:1;max-width:870px}
+.filter-pill{padding:11px 13px;background:#131e1a;color:#9eafa2;border:1px solid #2d4535;font:800 10px var(--font-mono);text-transform:uppercase;white-space:nowrap}.filter-pill:hover{color:white;border-color:#7fa459}.filter-pill[aria-pressed=true]{background:var(--acid);color:#0b170a;border-color:var(--acid)}
+.archive-tools{display:flex;align-items:center;gap:9px}.search-control{display:flex;align-items:center;gap:7px;padding:0 11px;background:#111b18;border:1px solid #2d4437;height:40px;color:#8ead92}.search-control>span:first-child{font-size:20px}.search-control input{border:0;outline:0;background:transparent;color:#ecf3e9;min-width:0;width:176px;font-size:12px}.search-control input::placeholder{color:#7c9385}.toggle-button{height:40px;border:1px solid #2d4437;background:#111b18;color:#bbc9b8;padding:0 10px;font:11px var(--font-mono);white-space:nowrap}.toggle-button[aria-pressed=true]{color:var(--acid);border-color:var(--acid)}.toggle-button span{margin-left:7px;color:var(--acid)}
+.results-line{display:flex;justify-content:space-between;gap:10px;margin:19px 0;color:#82998a;font:10px var(--font-mono);letter-spacing:1.3px}
+.incident-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.incident-card{background:linear-gradient(170deg,#15231d,#101916);border:1px solid #30483a;min-height:260px;display:flex;flex-direction:column;transition:border-color .16s,transform .16s}
+.incident-card:hover{border-color:#84aa5a;transform:translateY(-3px)}
+.incident-top{padding:15px 18px;border-bottom:1px dashed #324c39;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.incident-code{font:10px var(--font-mono);color:#839c88}.severity{font:800 9px var(--font-mono);letter-spacing:1px;padding:5px 7px;border:1px solid}
+.sev-red{color:var(--red);border-color:#754340;background:#2d1b1c}.sev-yellow{color:var(--orange);border-color:#6f5841;background:#32291d}.sev-green{color:var(--acid);border-color:#405b2e;background:#1e2b1a}
+.incident-body{flex:1;padding:20px 18px 22px}.incident-category{font:800 10px var(--font-mono);letter-spacing:.3px;text-transform:uppercase;color:#9bb781}
+.incident-body h3{font:900 25px/1.09 var(--font-display);letter-spacing:.4px;margin:11px 0 12px}.incident-body p{font-size:12px;color:#a2b4a7;line-height:1.68;margin-bottom:0}
+.incident-bottom{border-top:1px solid #2d4335;padding:9px 11px;display:flex;gap:8px;align-items:center}
+.card-action,.star-action,.remove-report{background:transparent;border:0;color:#9bae9c;font:800 10px var(--font-mono);padding:7px}.card-action:hover,.star-action:hover{color:var(--acid)}.star-action{margin-left:auto;font-size:19px;line-height:1}.star-action[aria-pressed=true]{color:var(--acid)}.remove-report{font-size:21px;color:var(--red)}.empty-results{grid-column:1/-1;padding:70px 15px;text-align:center;border:1px dashed var(--line);color:#9bab9d}.empty-results strong{font:32px var(--font-display);color:var(--white)}.empty-results p{font-size:13px;margin:15px 0 0}.archive-footer{text-align:center;padding:30px}
+.feature-section{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:6%;align-items:center;margin-top:55px;padding-top:70px;padding-bottom:70px;background:linear-gradient(135deg,#111e17,#0e1714);border-block:1px solid #2a4531;max-width:none;padding-inline:max(5%,calc((100vw - 1450px)/2))}
+.feature-intro h2{font-size:clamp(40px,5vw,70px)}.feature-intro>p{max-width:450px}.feature-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.feature-chips span{border:1px solid #405741;background:#1c3020;padding:9px 11px;color:#b9cfaf;font:10px var(--font-mono)}
+.label-workbench{border:1px solid #536653;background:#1a2823;padding:25px;box-shadow:12px 12px 0 #050a08}
+.workbench-title,.workbench-status{display:flex;align-items:center;justify-content:space-between;gap:7px;font:800 11px var(--font-mono);letter-spacing:1px;color:#d6e4d3}.workbench-status{color:var(--acid);font-size:9px}.workbench-status i{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 9px var(--acid)}
+.label-preview-wrap{padding:38px 8px 28px;position:relative}
+.label-preview{background:#f0efda;color:#111b14;padding:20px 10px 16px;border:4px solid #d0d3bb;display:flex;flex-direction:column;align-items:center;min-height:170px;justify-content:center;position:relative;z-index:2;box-shadow:0 10px 0 #56675d}
+.label-preview>span{font:800 10px var(--font-mono);letter-spacing:1px;border-bottom:2px solid #0b1410;padding-bottom:5px}
+.label-preview strong{font:900 clamp(28px,3.8vw,55px)/1.05 var(--font-display);text-align:center;overflow-wrap:anywhere;max-width:100%;margin:13px 0;letter-spacing:1px}
+.label-preview small{font:9px var(--font-mono)}.roll-top{position:absolute;width:82%;height:18px;border:2px solid #d0d3bb;background:repeating-linear-gradient(90deg,#c4c4a8 0 4px,#ecebd6 4px 8px);left:9%;bottom:10px}
+.field-label{font:800 10px var(--font-mono);letter-spacing:1px;display:flex;justify-content:space-between;gap:10px;margin-bottom:10px}.field-label span{color:#8ea594;font-weight:400}
+.label-workbench input{width:100%;height:46px;background:#0c1511;color:#fff;border:1px solid #4d6550;padding:0 13px;font:13px var(--font-mono)}.label-workbench input::placeholder{color:#758d78}.workbench-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 0}.workbench-actions .button{min-height:42px}.micro-note{font:9px/1.6 var(--font-mono);color:#89a08e;margin:15px 0 0}
+.generator-section{padding-top:110px}
+.ticket-shell{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.7fr);border:1px solid #49614b;background:#112019}
+.ticket-main{padding:28px 33px}.ticket-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:20px;border-bottom:1px dashed #516952;font:10px var(--font-mono);color:#9fb59d}.ticket-toolbar strong{font-size:14px;color:var(--white)}.ticket-pill{background:#433121;color:var(--orange);padding:8px 10px;letter-spacing:.2px}.ticket-label{font:800 10px var(--font-mono);color:var(--acid);letter-spacing:1.5px;margin:25px 0 11px}.ticket-main h3{font:900 37px var(--font-display);letter-spacing:.6px;margin-bottom:26px}
+.ticket-rows{border-top:1px solid #344b3a}.ticket-rows>div{display:grid;grid-template-columns:166px 1fr;gap:15px;padding:14px 0;border-bottom:1px solid #2d4235;align-items:start}.ticket-rows span{font:800 10px var(--font-mono);letter-spacing:.8px;color:#849d89}.ticket-rows strong{font-size:13px;font-weight:600;line-height:1.55;color:#e1e9de}
+.ticket-bottom{display:flex;justify-content:space-between;gap:15px;margin-top:24px;font:9px var(--font-mono);letter-spacing:.5px;color:#8aa28b}.ticket-bottom span:last-child{color:var(--orange)}
+.ticket-aside{border-left:1px solid #49614b;padding:31px 25px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:repeating-linear-gradient(135deg,#16271a,#16271a 15px,#192c1d 15px,#192c1d 30px)}.aside-eyebrow{font:800 10px var(--font-mono);letter-spacing:1px;color:var(--orange)}.skull{font:100px var(--font-display);line-height:1.45;color:var(--orange);text-shadow:5px 6px 0 #543b21}.ticket-aside strong{font:900 27px/1 var(--font-display)}.ticket-aside p{font-size:12px;line-height:1.7;color:#a9bca8;margin:14px 0 26px;max-width:200px}.ticket-aside .button{width:100%;margin-bottom:9px;font-size:10px;white-space:normal;padding-block:10px}
+.dual-section{padding-top:110px}.inline-actions{display:flex;gap:9px;flex-wrap:wrap}.inline-actions .button{font-size:10px;min-height:39px}
+.bingo-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.65fr);gap:23px}.bingo-board{background:#14221b;border:1px solid #3b5741;padding:15px}.bingo-letters{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.bingo-letters span{text-align:center;font:900 38px var(--font-display);padding:3px;color:var(--acid)}.bingo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.bingo-cell{aspect-ratio:1/1.07;background:#1d3023;border:1px solid #425f43;color:#d5e3d4;padding:8px 5px;font-size:clamp(9px,1vw,12px);line-height:1.26;font-weight:800;text-align:center;overflow-wrap:break-word;position:relative}.bingo-cell:hover{border-color:var(--acid);background:#2a412b}.bingo-cell.marked{background:#b8f654;color:#10210d;border-color:#ddffa0}.bingo-cell.marked:after{content:'✓';position:absolute;right:4px;top:2px;color:#294b19;font-size:11px}.bingo-cell.free{background:#eef7dd;color:#1c391a;font-size:11px}.bingo-side{padding:30px 25px;background:#17251d;border:1px solid #385540}.bingo-kicker{font:800 10px var(--font-mono);color:#9cae98;letter-spacing:1px}.bingo-number{font:900 96px/1.3 var(--font-display);color:var(--acid);letter-spacing:-3px;margin:17px 0}.bingo-number span{font-size:34px;color:#6b876d;letter-spacing:0}.bingo-side>p{font-size:13px;color:#abbfac;line-height:1.75}.bingo-rule{height:1px;background:#3a5842;margin:30px 0}.bingo-side h3{font:900 27px var(--font-display)}.bingo-earned{color:#0d1a0a;background:var(--acid);padding:15px;font:800 12px/1.5 var(--font-mono);margin-top:18px}
+.pay-section{padding-top:110px}.pay-layout{display:grid;grid-template-columns:1.13fr .87fr;gap:22px}.pay-form{border:1px solid #3d5943;background:#132018;padding:30px}.pay-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:25px}.pay-form-grid label{display:flex;flex-direction:column;gap:10px;position:relative;font:800 10px var(--font-mono);letter-spacing:.8px;color:#adc3ad}.pay-form-grid label span{position:absolute;right:11px;bottom:14px;color:#77917e}.pay-form-grid input{background:#0a140e;color:var(--white);height:48px;border:1px solid #455d47;padding:0 45px 0 13px;font:700 17px var(--font-mono);min-width:0}.pay-form-grid input:focus{border-color:var(--acid)}.pay-result{border:1px solid #71884f;background:linear-gradient(130deg,#284324,#162719);padding:29px}.pay-result-top{display:flex;justify-content:space-between;gap:12px;font:800 11px var(--font-mono);color:#bdd5b1}.pay-result-top span{font-size:9px;color:#88a77e}.pay-number{font:900 clamp(56px,7vw,98px)/1.3 var(--font-display);color:var(--acid);white-space:nowrap;letter-spacing:-1px}.pay-number span{font:800 15px var(--font-mono);letter-spacing:0;color:#a7c59b}.pay-result>p{font-size:14px;line-height:1.75;min-height:52px;color:#d6e3cc}.pay-breakdown{border-top:1px solid #54734d;border-bottom:1px solid #54734d;margin:24px 0;display:grid;gap:16px;padding:19px 0}.pay-breakdown>div{display:flex;justify-content:space-between;gap:12px}.pay-breakdown span{font:10px var(--font-mono);color:#a1b69f}.pay-breakdown strong{font:800 14px var(--font-mono)}.pay-result>small{display:block;font:10px/1.55 var(--font-mono);color:#96ad8e}
+.gauntlet-section{padding-top:110px}.gauntlet-shell{border:1px solid #5b503e;background:#171b17}.gauntlet-top{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:26px 32px;border-bottom:1px solid #494d3a;background:#20251c}.gauntlet-overline{font:800 10px var(--font-mono);color:var(--orange);letter-spacing:1px}.gauntlet-top h3{font:900 26px var(--font-display);margin:10px 0 0}.gauntlet-top>span{font:800 23px var(--font-mono);color:var(--orange);white-space:nowrap}.gauntlet-track{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin:28px 32px 0}.progress-bar{height:9px;border:1px solid #5c6350;background:#303b30;transition:background .15s}.progress-bar.passed{background:var(--acid);border-color:var(--acid)}.progress-bar.current{background:var(--orange);border-color:var(--orange)}.gauntlet-content{display:flex;align-items:flex-start;gap:22px;padding:42px 32px;min-height:205px}.portal-icon{width:70px;height:70px;flex-shrink:0;display:grid;place-items:center;background:#353726;border:1px solid #68664b;font-size:35px;color:var(--orange)}.portal-name{font:800 11px var(--font-mono);letter-spacing:1px;color:var(--orange);text-transform:uppercase}.gauntlet-content h4{font:900 27px/1.1 var(--font-display);margin:10px 0 13px}.gauntlet-content p:last-child{font-size:13px;line-height:1.7;color:#bac1ad;margin:0}.gauntlet-actions{border-top:1px solid #494d3a;display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:20px 32px}.gauntlet-actions>span{font:800 11px var(--font-mono);color:var(--red);margin-left:auto}
+.contribute-section{padding-top:110px;padding-bottom:105px}.contribute-layout{display:grid;grid-template-columns:1fr 1fr;gap:7%;background:linear-gradient(145deg,#203b22,#122118);border:1px solid #557147;padding:42px}.contribute-layout h2{font-size:clamp(38px,5vw,65px)}.contribute-layout p.privacy-warning{margin-top:22px;color:#d9c49d;font:11px/1.75 var(--font-mono);max-width:530px}.report-form{display:grid;gap:12px}.report-form label{display:flex;flex-direction:column;gap:7px;font:800 10px var(--font-mono);letter-spacing:.7px;color:#cfddc7}.report-form input,.report-form select,.report-form textarea{background:#0b180e;color:#f1f4e9;border:1px solid #54714d;padding:13px;width:100%;font:12px var(--font-body);resize:vertical;min-width:0}.report-form input::placeholder,.report-form textarea::placeholder{color:#749078}.report-buttons{display:flex;flex-wrap:wrap;gap:9px}.report-buttons .button{font-size:10px}.report-form>small{color:#a3ba9d;font:10px/1.6 var(--font-mono)}
+.site-footer{border-top:2px solid var(--acid);background:#101b14;display:flex;flex-direction:column;align-items:center;text-align:center;padding:47px 20px 35px;gap:14px}.footer-logo{font:900 32px var(--font-display);letter-spacing:1px}.site-footer p{color:#ddebd8;font:800 12px var(--font-mono);letter-spacing:.6px;margin:0}.site-footer p span{color:var(--acid)}.footer-meta{font:10px/1.7 var(--font-mono);color:#7f9d80}.back-top{font:800 11px var(--font-mono);color:var(--acid);margin-top:10px}.back-top:hover{text-decoration:underline}
+.toast{position:fixed;right:20px;bottom:22px;z-index:100;background:#bbf958;color:#0b170a;border:2px solid #223b19;box-shadow:8px 8px 0 #050b07;padding:14px 18px;font:800 12px/1.5 var(--font-mono);max-width:min(420px,calc(100vw - 35px))}
+#print-label{display:none}
+@keyframes blink{50%{opacity:.3}}@keyframes marquee{to{transform:translateX(-50%)}}
+@media(max-width:1200px){.nav-links{gap:14px}.nav-links a{font-size:10px}.hero{padding-inline:4%;grid-template-columns:1.07fr .93fr}.hero h1{font-size:clamp(92px,10.2vw,134px)}.hero-art{transform:scale(.87) rotate(-5deg);transform-origin:center}.incident-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding-inline:4%}.feature-section{padding-inline:4%}.label-sticker strong{font-size:36px}}
+@media(max-width:950px){.site-header{padding:0 4%;}.nav-links{display:none}.hero{grid-template-columns:1fr 1fr}.hero-copy{padding-top:12px}.hero h1{font-size:clamp(84px,12vw,125px)}.hero-art{transform:scale(.7) rotate(-5deg);transform-origin:left center;margin-left:-10%}.hero-sub{font-size:12px}.hero-text{font-size:13px}.hero-bottom{font-size:9px}.stats{grid-template-columns:repeat(2,1fr)}.archive-controls{flex-direction:column}.archive-tools{width:100%}.search-control{flex:1}.search-control input{width:100%}.bingo-layout,.pay-layout{grid-template-columns:1fr}.bingo-side{display:grid;grid-template-columns:1fr 1fr;gap:10px}.bingo-number{grid-row:2;grid-column:1}.bingo-side>p{grid-row:3;grid-column:1}.bingo-rule{display:none}.bingo-side h3{grid-row:1;grid-column:2}.bingo-side h3+p{grid-row:2/4;grid-column:2}.ticket-shell{grid-template-columns:minmax(0,1fr) minmax(215px,.58fr)}}
+@media(max-width:700px){.site-header{height:69px}.brand strong{font-size:20px}.brand small{font-size:7px;letter-spacing:1.1px}.brand-icon{height:36px;width:36px;font-size:23px}.nav-action{font-size:10px;padding:11px}.hero{display:flex;flex-direction:column;min-height:760px;padding:42px 5% 70px}.hero-copy{padding-top:0}.hero h1{font-size:clamp(95px,17vw,145px);margin:25px 0}.hero-art{height:310px;width:100%;min-height:310px;transform:scale(.68) rotate(-5deg);transform-origin:top left;align-self:flex-start;margin:45px 0 -60px 10%;}.hero-bottom{padding:10px 5%;gap:7px;flex-wrap:wrap;font-size:9px}.hero-bottom span:last-child{display:none}.orbit-one{width:390px;height:390px}.orbit-two{width:300px;height:300px}.section{padding:76px 5% 10px}.section-header{align-items:flex-start}.stamp{display:none}.section-header h2,.feature-intro h2,.contribute-layout h2{font-size:clamp(41px,9vw,65px)}.incident-grid{grid-template-columns:1fr}.incident-card{min-height:213px}.incident-body h3{font-size:26px}.feature-section{display:block;padding:65px 5%;margin-top:65px}.feature-intro{margin-bottom:30px}.label-workbench{padding:16px}.ticket-shell{grid-template-columns:1fr}.ticket-aside{border-left:0;border-top:1px solid #49614b;padding:29px 20px}.ticket-aside .button{max-width:360px}.skull{font-size:68px}.ticket-main{padding:20px}.ticket-rows>div{grid-template-columns:120px 1fr}.ticket-bottom{flex-direction:column;gap:7px}.inline-actions{width:100%}.dual-section .section-header{flex-direction:column}.bingo-layout{gap:12px}.bingo-board{padding:9px}.bingo-letters span{font-size:28px}.bingo-cell{font-size:clamp(8px,2.4vw,11px);padding:4px 2px;min-height:59px}.bingo-side{padding:25px}.bingo-number{font-size:70px}.pay-form,.pay-result{padding:20px}.gauntlet-top{padding:23px}.gauntlet-top h3{font-size:24px}.gauntlet-content{padding:30px 22px}.gauntlet-track{margin-inline:22px}.gauntlet-actions{padding:20px 22px}.contribute-layout{grid-template-columns:1fr;gap:24px;padding:25px}}
+@media(max-width:440px){.nav-action{display:none}.hero{min-height:745px}.hero h1{font-size:94px}.hero-art{margin-left:0;transform:scale(.60) rotate(-5deg)}.hero-ctas{gap:8px}.hero-ctas .button{font-size:10px;padding:0 11px}.hero-sub{letter-spacing:1px}.label-preview strong{font-size:30px}.workbench-actions .button{flex:1;font-size:10px;padding:0 9px}.ticket-toolbar{align-items:flex-start;flex-direction:column}.ticket-rows>div{grid-template-columns:1fr;gap:5px}.bingo-cell{font-size:8px;min-height:55px}.bingo-side{display:block}.pay-form-grid{gap:11px}.pay-form-grid label{font-size:9px}.pay-form-grid input{font-size:15px}.pay-number{font-size:67px}.gauntlet-content{flex-direction:column}.gauntlet-actions>span{width:100%;margin:5px 0 0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{
+  @page{size:letter portrait;margin:1in}
+  body{background:white!important;color:black!important}
+  body>*:not(#print-label){display:none!important}
+  #print-label{display:flex!important;border:4px solid #111;min-height:180px;max-width:660px;margin:100px auto 0;padding:20px;flex-direction:column;align-items:center;justify-content:center;color:#111;text-align:center}
+  #print-label div{font:bold 13px var(--font-mono);letter-spacing:2px}
+  #print-label strong{font:900 65px/1.2 Impact,sans-serif;margin:15px 0;overflow-wrap:anywhere}
+  #print-label small{font:11px var(--font-mono)}
+}
+/* Constrain content-based grid tracks on narrow devices. */
+.pay-layout,.bingo-layout,.ticket-shell,.contribute-layout{min-width:0}
+.pay-form,.pay-result,.bingo-board,.ticket-main,.ticket-aside{min-width:0}
+.pay-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:950px){.pay-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:440px){.pay-number{font-size:clamp(50px,15vw,67px)}.pay-result-top{flex-wrap:wrap}.pay-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Long title text must never escape the vintage label border. */
+.label-sticker strong{font-size:clamp(25px,3.05vw,44px);white-space:normal;text-align:center;max-width:100%;overflow-wrap:anywhere}
+</style>
+  <title>THE MDF FILES · Technician Horror Archive</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="The MDF Files homepage"><span class="brand-icon" aria-hidden="true">▦</span><span><strong>THE MDF FILES<span class="brand-dot">.</span></strong><small>FIELD TECHNICIAN HORROR ARCHIVE</small></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#archive">The archive</a><a href="#generator">Ticket roulette</a><a href="#bingo">Field bingo</a><a href="#gauntlet">Paperwork hell</a>
+    </nav>
+    <a class="nav-action" href="#labels">LABEL LAB <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> DECLASSIFIED INCIDENT REPORTS <span class="sep">/</span> VOL. 001</div>
+        <h1 id="hero-title">THE <span>MDF</span><br>FILES<span class="punct">_</span></h1>
+        <p class="hero-sub">THE TRUTH IS IN THE PATCH PANEL.</p>
+        <p class="hero-text">Where the scope is “simple,” the cable is “probably internet,” and every contractor needs the exact same photos uploaded to their own portal.</p>
+        <div class="hero-ctas"><a href="#archive" class="button button-acid">OPEN THE ARCHIVE <span>↗</span></a><a href="#generator" class="button button-outline">GENERATE A NIGHTMARE <span>⌁</span></a></div>
+        <div class="hero-disclaimer"><span>ⓘ</span> 100% fictional. 300% emotionally accurate.</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a network switch with a suspicious TRUST ME BRO label">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="incident-chip">CASE FILE <strong>#0001</strong></div>
+        <div class="rack-top"><span>PROPERTY OF WHOEVER WAS HERE LAST</span><span class="rack-top-light"></span></div>
+        <div class="rack-box">
+          <div class="rack-head"><span>▤</span> CORE SWITCH <small>CRITICAL / UNVERIFIED</small></div>
+          <div class="rack-ports" aria-hidden="true">
+            <i class="port live"></i><i class="port"></i><i class="port live"></i><i class="port live"></i><i class="port"></i><i class="port amber"></i><i class="port live"></i><i class="port"></i><i class="port"></i><i class="port live"></i><i class="port"></i><i class="port amber"></i>
+          </div>
+          <div class="rack-lights"><span>SYS <b class="light green"></b></span><span>ALM <b class="light red"></b></span><span>PWR <b class="light green"></b></span></div>
+        </div>
+        <div class="cable cable-a" aria-hidden="true"></div><div class="cable cable-b" aria-hidden="true"></div><div class="cable cable-c" aria-hidden="true"></div>
+        <div class="label-sticker"><span>NETWORK / PATCH PANEL</span><strong>TRUST ME BRO</strong><small>ORIGIN: UNKNOWN &nbsp; TEST: VIBES</small></div>
+        <div class="rack-caption">FIG 01 // DO NOT UNPLUG. NOBODY KNOWS.</div>
+        <div class="hazard hazard-a" aria-hidden="true">⚠</div>
+      </div>
+      <div class="hero-bottom"><span>SUBJECT: NETWORK INFRASTRUCTURE</span><span>STATUS: NOT MY TICKET</span><span>CONFIDENCE: <b>ABSOLUTELY NOT</b></span></div>
+    </section>
+
+    <div class="ticker" aria-label="Running technician horror messages"><div class="ticker-track" aria-hidden="true"><span>● IT WAS WORKING YESTERDAY</span><span>● APPROVED SCOPE IS A SUGGESTION</span><span>● CHECK PORT 17</span><span>● PHOTO REJECTED: WRONG ANGLE</span><span>● THE NOC WILL CALL YOU BACK</span><span>● IT WAS WORKING YESTERDAY</span><span>● APPROVED SCOPE IS A SUGGESTION</span><span>● CHECK PORT 17</span><span>● PHOTO REJECTED: WRONG ANGLE</span><span>● THE NOC WILL CALL YOU BACK</span></div></div>
+
+    <section class="section archive-section" id="archive" aria-labelledby="archive-heading">
+      <div class="section-header"><div><p class="kicker">01 / THE EVIDENCE LOCKER</p><h2 id="archive-heading">FIELD HORROR <span>ARCHIVE</span></h2><p>Actual trauma? No. Fictional examples inspired by the universal absurdity of field work? Absolutely.</p></div><span class="stamp">CASE STATUS <b>UNRESOLVED</b></span></div>
+      <div class="archive-controls"><div class="filter-pills" id="filters" role="group" aria-label="Filter incidents by category"></div><div class="archive-tools"><label class="search-control"><span aria-hidden="true">⌕</span><span class="sr-only">Search incidents</span><input id="search" type="search" placeholder="Search the evidence..." autocomplete="off"></label><button type="button" class="toggle-button" id="favorites-toggle" aria-pressed="false">☆ SAVED <span id="favorite-count">0</span></button></div></div>
+      <div class="results-line"><span id="results-count">Loading incidents...</span><span>CONFIDENTIALITY: FICTIONAL ONLY</span></div>
+      <div id="incident-grid" class="incident-grid" aria-live="polite"></div>
+      <div class="archive-footer"><button class="button button-outline" id="show-more" type="button" hidden>LOAD MORE REPORTS <span>↓</span></button></div>
+    </section>
+
+    <section class="section feature-section" id="labels" aria-labelledby="labels-heading">
+      <div class="feature-intro"><p class="kicker">02 / ASSET IDENTIFICATION DEPARTMENT</p><h2 id="labels-heading">THE <span>LABEL LAB</span></h2><p>For the technician who wants to leave the next person a mystery they’ll never forget. Comedy labels only. Please use real port IDs on actual jobs.</p><div class="feature-chips"><span>✧ RANDOMIZER</span><span>✧ CUSTOM MESSAGE</span><span>✧ PRINTABLE</span></div></div>
+      <div class="label-workbench"><div class="workbench-title"><span>LABEL PRINTER 6000</span><span class="workbench-status"><i></i> ONLINE / QUESTIONABLE</span></div><div class="label-preview-wrap"><div class="label-preview" id="label-preview" aria-live="polite"><span>PATCH / MDF / ?????????</span><strong id="label-output">TRUST ME BRO</strong><small>LABEL ID: <span id="label-id">0001</span> / DO NOT AUDIT</small></div><div class="roll-top"></div></div><label class="field-label" for="custom-label">CUSTOM LABEL TEXT <span>MAX 50 CHARACTERS</span></label><input id="custom-label" type="text" maxlength="50" placeholder="Type your own cursed label..." autocomplete="off"><div class="workbench-actions"><button type="button" id="label-random" class="button button-acid">↻ RANDOM LABEL</button><button type="button" id="label-copy" class="button button-dark">⧉ COPY</button><button type="button" id="label-print" class="button button-dark">▤ PRINT</button></div><p class="micro-note">PRINTING FOR OFFICE HUMOR ONLY. A PROPER LABEL SCHEME CAN SAVE SOMEONE'S WEEK.</p></div>
+    </section>
+
+    <section class="section generator-section" id="generator" aria-labelledby="generator-heading">
+      <div class="section-header"><div><p class="kicker">03 / AUTOMATED DISPATCH NIGHTMARE SYSTEM</p><h2 id="generator-heading">TICKET <span>ROULETTE</span></h2><p>A randomly generated work order assembled by a committee of fictional subcontractors.</p></div><span class="stamp danger">SCOPE <b>SUBJECT TO CHANGE</b></span></div>
+      <div class="ticket-shell"><div class="ticket-main"><div class="ticket-toolbar"><span>WORK ORDER <strong id="ticket-id">#666-0041</strong></span><span class="ticket-pill">URGENT / LOW PRIORITY</span></div><p class="ticket-label">REQUESTED SERVICE</p><h3 id="ticket-heading">Quick cabling adjustment</h3><div class="ticket-rows"><div><span>CUSTOMER</span><strong id="ticket-customer">An anonymous enterprise</strong></div><div><span>LOCATION</span><strong id="ticket-location">Behind an industrial freezer</strong></div><div><span>UPON ARRIVAL</span><strong id="ticket-surprise">The replacement equipment arrives tomorrow.</strong></div><div><span>REQUIRED CLOSEOUT</span><strong id="ticket-signoff">Upload the same PDF to four unrelated portals.</strong></div><div><span>COMPENSATION</span><strong id="ticket-pay">$55 flat, including travel</strong></div></div><div class="ticket-bottom"><span>EST. LABOR: 12 MINUTES</span><span>*THE ESTIMATE IS A WORK OF FICTION</span></div></div><aside class="ticket-aside"><span class="aside-eyebrow">SEVERITY REPORT</span><div class="skull" aria-hidden="true">☠</div><strong>REQUIRES A MIRACLE</strong><p>Dispatch says this is easy. That's your first warning.</p><button type="button" id="ticket-generate" class="button button-acid">↻ GENERATE NEXT NIGHTMARE</button><button type="button" id="ticket-copy" class="button button-outline">⧉ COPY WORK ORDER</button></aside></div>
+    </section>
+
+    <section class="section dual-section" id="bingo" aria-labelledby="bingo-heading"><div class="section-header"><div><p class="kicker">04 / TECHNICIAN SURVIVAL SYSTEM</p><h2 id="bingo-heading">FIELD TECH <span>BINGO</span></h2><p>Mark what you've encountered. Five in a row means you deserve lunch without a dispatch call.</p></div><div class="inline-actions"><button id="bingo-new" class="button button-outline" type="button">↻ NEW CARD</button><button id="bingo-reset" class="button button-dark" type="button">CLEAR MARKS</button></div></div><div class="bingo-layout"><div class="bingo-board"><div class="bingo-letters" aria-hidden="true"><span>B</span><span>I</span><span>N</span><span>G</span><span>O</span></div><div id="bingo-grid" class="bingo-grid" aria-label="Field tech bingo board"></div></div><aside class="bingo-side"><span class="bingo-kicker">FIELD READINESS RATING</span><div class="bingo-number" id="bingo-count">0<span>/25</span></div><p id="bingo-message" aria-live="polite">A fresh card. So much hope. So little reason.</p><div class="bingo-rule"></div><h3>OFFICIAL RULES</h3><p>Click a square when the field gods deliver one of these delights. The center space is free, because nothing else is.</p><div class="bingo-earned" id="bingo-earned" hidden>✓ BINGO ACHIEVED. DISPATCH STILL CALLING.</div></aside></div></section>
+
+    <section class="section pay-section" id="pay" aria-labelledby="pay-heading"><div class="section-header"><div><p class="kicker">05 / THE SCOPE-TO-PAY REALITY DEPARTMENT</p><h2 id="pay-heading">“EASY MONEY” <span>CALCULATOR</span></h2><p>Take the advertised payout and include the time and expenses they conveniently forgot. Illustrative math, before taxes.</p></div></div><div class="pay-layout"><form id="pay-form" class="pay-form"><div class="pay-form-grid"><label>OFFERED PAY <span>$</span><input id="pay-offer" type="number" min="0" max="1000000" step="0.01" value="85" inputmode="decimal" required></label><label>ONSITE HOURS <span>HRS</span><input id="pay-onsite" type="number" min="0" max="10000" step="0.25" value="4" inputmode="decimal" required></label><label>ROUND-TRIP TRAVEL <span>HRS</span><input id="pay-travel" type="number" min="0" max="10000" step="0.25" value="2" inputmode="decimal" required></label><label>PAPERWORK / HOLD <span>HRS</span><input id="pay-paperwork" type="number" min="0" max="10000" step="0.25" value="1.5" inputmode="decimal" required></label><label>TRAVEL / SUPPLIES <span>$</span><input id="pay-expenses" type="number" min="0" max="1000000" step="0.01" value="22" inputmode="decimal" required></label><label>PLATFORM / OTHER FEES <span>$</span><input id="pay-fees" type="number" min="0" max="1000000" step="0.01" value="8" inputmode="decimal" required></label></div><button type="submit" class="button button-acid">CALCULATE REALITY ↗</button></form><div class="pay-result" id="pay-results" aria-live="polite"><div class="pay-result-top">TRUE HOURLY RATE <span>BEFORE TAXES</span></div><div class="pay-number" id="pay-hourly">$7.33<span>/hr</span></div><p id="pay-verdict">Congratulations! The cable spool might be earning more than you.</p><div class="pay-breakdown"><div><span>REMAINING AFTER COSTS</span><strong id="pay-net">$55.00</strong></div><div><span>TOTAL TIME INVESTED</span><strong id="pay-hours">7.5 hrs</strong></div></div><small>No income tax, overhead, insurance, depreciation, or other business costs are included. Not financial advice.</small></div></div></section>
+
+    <section class="section gauntlet-section" id="gauntlet" aria-labelledby="gauntlet-heading"><div class="section-header"><div><p class="kicker">06 / THE SEVEN-PORTAL CLOSEOUT TRIAL</p><h2 id="gauntlet-heading">PAPERWORK <span>GAUNTLET</span></h2><p>One completed service visit. Seven portals. Fourteen opportunities to reject the same evidence.</p></div><span class="stamp danger">APPROVAL <b>INDETERMINATE</b></span></div><div class="gauntlet-shell"><div class="gauntlet-top"><div><span class="gauntlet-overline">SIMULATION SESSION</span><h3 id="gauntlet-title">READY TO BEGIN THE SUFFERING?</h3></div><span id="gauntlet-stage-number">00 / 07</span></div><div class="gauntlet-track" id="gauntlet-track" aria-label="Seven-step paperwork progress"></div><div class="gauntlet-content"><div class="portal-icon" aria-hidden="true">▤</div><div><p id="gauntlet-portal" class="portal-name">No portal selected</p><h4 id="gauntlet-requirement">Please submit your existence for verification.</h4><p id="gauntlet-feedback" role="status">Each portal must be satisfied. Certain steps require resubmission for completely arbitrary reasons.</p></div></div><div class="gauntlet-actions"><button type="button" id="gauntlet-next" class="button button-acid">BEGIN CLOSEOUT ↗</button><button type="button" id="gauntlet-restart" class="button button-dark">↻ START OVER</button><span id="gauntlet-rejections">REJECTIONS: 0</span></div></div></section>
+
+    <section class="section contribute-section" id="report" aria-labelledby="report-heading"><div class="contribute-layout"><div><p class="kicker">07 / WITNESS STATEMENTS</p><h2 id="report-heading">GOT A <span>HORROR STORY?</span></h2><p>Keep the memories, lose the identifying details. Add a fictionalized incident to your personal archive right here in your browser, then export it as JSON.</p><p class="privacy-warning">⚠ Don't include real customers, addresses, work-order numbers, credentials, private records, or confidential site details. This form does not publish anything online.</p></div><form id="report-form" class="report-form"><label>TITLE <input id="report-title" maxlength="80" required placeholder="The Day the Rack Fought Back"></label><label>CATEGORY <select id="report-category"><option value="labels">Cable Labels</option><option value="tickets">Tickets From Hell</option><option value="scope">Scope Creep</option><option value="pay">Pay Scopes</option><option value="paperwork">Paperwork Purgatory</option><option value="field">Field Encounters</option></select></label><label>FICTIONALIZED REPORT <textarea id="report-body" minlength="10" maxlength="300" required rows="3" placeholder="Once upon a site visit... (no identifying details)"></textarea></label><div class="report-buttons"><button class="button button-acid" type="submit">SAVE LOCALLY ↗</button><button class="button button-dark" id="report-export" type="button">↓ EXPORT YOUR STORIES</button></div><small id="report-status" role="status">Only stored in this browser. Not publicly submitted.</small></form></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-logo">▦ THE MDF FILES<span>.</span></div><p>THE TRUTH IS IN THE PATCH PANEL. <span>THE PAPERWORK IS WORSE.</span></p><div class="footer-meta">A FICTIONAL TECHNICIAN COMEDY ARCHIVE · NO REAL CLIENT RECORDS · MADE FOR THE PEOPLE DOING THE WORK</div><a href="#top" class="back-top">BACK TO TOP ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <div id="print-label" aria-hidden="true"><div>NETWORK / PATCH PANEL</div><strong id="print-label-text">TRUST ME BRO</strong><small>DO NOT USE ON LIVE PRODUCTION CABLING</small></div>
+  <script>
+// Every entry is original, fictional satire, not an actual customer work order.
+const CATEGORIES = [
+  { id: 'labels', label: 'Cable Labels', icon: '🏷️' },
+  { id: 'tickets', label: 'Tickets From Hell', icon: '📋' },
+  { id: 'scope', label: 'Scope Creep', icon: '🕳️' },
+  { id: 'pay', label: 'Pay Scopes', icon: '💸' },
+  { id: 'paperwork', label: 'Paperwork Purgatory', icon: '📎' },
+  { id: 'field', label: 'Field Encounters', icon: '🔦' },
+];
+
+const C = (id, category, title, body, severity = 'CURSED') => ({ id, category, title, body, severity });
+const INCIDENTS = [
+  C('L01','labels','TRUST ME BRO','Professionally laminated. Technically meaningless. Spiritually devastating.','CLASSIC'),
+  C('L02','labels','TESTED BY VIBES','Fluke certification failed. Confidence remains inexplicably high.','CLASSIC'),
+  C('L03','labels','DO NOT UNPLUG. WE DON’T KNOW WHAT IT DOES.','The sole remaining pillar of the company’s operational continuity.','CRITICAL'),
+  C('L04','labels','MDF RUN?!?!','An international symbol of accurate documentation.','CLASSIC'),
+  C('L05','labels','LARRINA KNOWS','The only trustworthy port map in the building.','CLASSIC'),
+  C('L06','labels','PORT 17: EMOTIONAL SUPPORT ETHERNET','Nobody knows what it connects, but everybody feels better when it blinks.','CURSED'),
+  C('L07','labels','WORKED IN 2009','The punchdown is vintage. The trouble ticket is not.','CURSED'),
+  C('L08','labels','THE OTHER BLUE ONE','Every cable is blue. Every single one.','CRITICAL'),
+  C('L09','labels','DO NOT CERTIFY (SENTIMENTAL)','A cable with too much history to be tested.','CURSED'),
+  C('L10','labels','CABLE 41 OF 40','Change order received through interpretive dance.','CRITICAL'),
+  C('L11','labels','ABANDON ALL POE','The phone powers on when nobody is looking.','CURSED'),
+  C('L12','labels','UNPLUG TO SUMMON MANAGER','This one somehow knows how to page the regional director.','CLASSIC'),
+  C('L13','labels','DEFINITELY NOT THE FIREWALL','Until you pull it.','CURSED'),
+  C('L14','labels','??? → PROBABLY INTERNET','A complete end-to-end topology, apparently.','CLASSIC'),
+  C('L15','labels','LOAD-BEARING ETHERNET','If removed, the entire building may lose structural integrity.','CRITICAL'),
+  C('L16','labels','ASK STEVE','Steve quit nine years ago.','CURSED'),
+  C('L17','labels','PRIMARY / BACKUP / ALSO PRIMARY','Three connections, one switch, zero documentation.','CRITICAL'),
+  C('L18','labels','DO NOT TOUCH UNTIL MONDAY','It is currently Monday.','CLASSIC'),
+  C('L19','labels','YELLOW IS THE NEW ORANGE','A patching standard invented at 2:11 a.m.','CURSED'),
+  C('L20','labels','IF FOUND, RETURN TO MDF','Found in the ceiling of a completely different building.','CURSED'),
+  C('T01','tickets','“Simple Network Refresh”','Scope: replace one switch. Upon arrival: 11 switches, 3 closets, no lift, no escort, no diagram, and “the whole store is down.”','CRITICAL'),
+  C('T02','tickets','“Quick Five-Minute Fix”','Site contact has been waiting since 6 a.m. Their issue is “the internet feels slow sometimes.”','CLASSIC'),
+  C('T03','tickets','“No Tools Required”','Work instructions: bring a 12-foot ladder, punchdown kit, fiber scope, certifier, drill, and spare wall anchors.','CURSED'),
+  C('T04','tickets','“Call Before Arrival”','You call before arrival. They tell you to call when you arrive. They are not at the location.','CLASSIC'),
+  C('T05','tickets','“Equipment Is Already On Site”','It is. At the regional warehouse. Three states away.','CRITICAL'),
+  C('T06','tickets','“Please Obtain Store Manager Signoff”','Manager left yesterday. Assistant manager cannot sign. Regional manager only accepts fax.','CURSED'),
+  C('T07','tickets','“Rack Is Easily Accessible”','The rack is behind a refrigerator, two seasonal displays, and a locked electrical cage.','CRITICAL'),
+  C('T08','tickets','“Technician Must Be On Time”','Dispatch calls 28 minutes after your start time to tell you the work order has not been approved.','CLASSIC'),
+  C('T09','tickets','“Replace One Access Point”','The access point is 24 feet up, directly above a baptismal font, during an active event.','CURSED'),
+  C('T10','tickets','“All Cables Clearly Labeled”','All cables are labeled “DATA.” Except one labeled “OLD DATA.”','CLASSIC'),
+  C('T11','tickets','“Do Not Disrupt Business Operations”','Installation includes moving the core switch during lunch rush. Downtime window: zero seconds.','CRITICAL'),
+  C('T12','tickets','“Site Has Full IT Support”','The IT contact is a framed photo of someone named Brian.','CURSED'),
+  C('T13','tickets','“Photo of Completed Work Required”','But absolutely no photographs may be taken on the premises.','CURSED'),
+  C('T14','tickets','“Escalate If Necessary”','Escalation number forwards directly to your own voicemail.','CLASSIC'),
+  C('S01','scope','“While You’re There…”','Can you also install the cameras, fix the printer, move the safe, and teach Karen how to use Excel?','CRITICAL'),
+  C('S02','scope','“One Extra Cable”','The “one extra cable” needs 480 feet of conduit through a concrete loading dock.','CURSED'),
+  C('S03','scope','“Minor Modification”','New request: relocate the MDF to the other side of the building. Same budget.','CRITICAL'),
+  C('S04','scope','“No Change Order Needed”','They describe a brand-new project but insist it fits inside the original one-hour service call.','CLASSIC'),
+  C('S05','scope','“Can You Just Check the Wi-Fi?”','The Wi-Fi problem turns out to be 32 handheld scanners with conflicting static IPs.','CURSED'),
+  C('S06','scope','“Please Reuse Existing Cabling”','The existing cable is phone wire, spliced to speaker wire, then zip-tied to a sprinkler pipe.','CRITICAL'),
+  C('S07','scope','“Might Need A Little Cleanup”','The rack door opens and 900 unlabeled patch cables attempt escape.','CLASSIC'),
+  C('S08','scope','“Just a Quick Walkthrough”','The walkthrough includes three buildings, two roofs, and an off-site pump house.','CURSED'),
+  C('S09','scope','“Cable Pull Only”','They also need conduit design, permits, termination, testing, labels, as-builts, and a warranty.','CRITICAL'),
+  C('S10','scope','“Customer Provided Materials”','Customer supplies exactly one spool of cable and an inspirational quote.','CURSED'),
+  C('P01','pay','“Competitive Compensation”','Offered: $45 flat. Travel: 90 miles each way. Required: $9,000 certification equipment.','CRITICAL'),
+  C('P02','pay','“Two-Hour Minimum”','Includes four hours of travel, two hours on hold, and one hour finding the manager. Only on-site time counts.','CURSED'),
+  C('P03','pay','“Great Opportunity for Exposure”','Finally, the chance for a network technician to become… visible. To people. In a network closet.','CLASSIC'),
+  C('P04','pay','“Price Is Firm”','Scope is flexible, requirements are flexible, arrival time is flexible. Only payment has boundaries.','CRITICAL'),
+  C('P05','pay','“Bonus Available”','Bonus requires uploading 86 photos within 11 minutes, using an app currently under maintenance.','CURSED'),
+  C('P06','pay','“Easy $75”','The access point is inaccessible without a $500 lift rental. Rental not reimbursed.','CRITICAL'),
+  C('P07','pay','“Travel Included”','Clarification: they included travel as a *concept*, not as compensation.','CLASSIC'),
+  C('P08','pay','“Paid Upon Acceptance”','Acceptance requires signoff by a department that has not existed since the merger.','CURSED'),
+  C('P09','pay','“All-Inclusive Bid”','The instructions were revised nine times after you accepted. The bid was not.','CRITICAL'),
+  C('P10','pay','“Payment Terms: Soon”','Invoice status: pending review. Reviewer status: vacation. Vacation status: indefinite.','CLASSIC'),
+  C('W01','paperwork','The Seven-Portal Sacrament','Prime vendor wants photos. Sub-vendor wants the *same* photos. Client portal wants them upside down.','CRITICAL'),
+  C('W02','paperwork','Mandatory Duplicate Upload','You already submitted the signed worksheet. Please manually retype every field into this other worksheet.','CLASSIC'),
+  C('W03','paperwork','The PDF That Refuses to Be Saved','A required interactive PDF that erases all 47 fields when opened in the supplied viewer.','CURSED'),
+  C('W04','paperwork','Photo 34: A Different Angle','Quality control: “Please resubmit the rack photo from slightly farther away.” Tech is now 300 miles away.','CRITICAL'),
+  C('W05','paperwork','Proof of Arrival, Again','GPS check-in, text dispatch, call NOC, screenshot the app, photograph the building, and get a timestamped signature.','CLASSIC'),
+  C('W06','paperwork','The Final Final Closeout','The folder contains FINAL.pdf, FINAL2.pdf, FINAL_FIXED.pdf, and FINAL_FINAL_REAL.pdf. None are accepted.','CURSED'),
+  C('W07','paperwork','Photo Requirements: Unlimited','Upload a picture of each individual cable run, each keystone, the ceiling tile, the label, and your existential confusion.','CLASSIC'),
+  C('W08','paperwork','The Signature Paradox','Work is not complete without a signature. The signatory may only sign after work is marked complete.','CRITICAL'),
+  C('W09','paperwork','Paperwork Has Its Own Paperwork','Please fill out an attestation verifying that you reviewed the document explaining how to fill out the form.','CURSED'),
+  C('W10','paperwork','Rejected: Timestamp Format','Uploaded at 14:07:03. Portal required 2:07:03 PM. Please resubmit every attachment.','CLASSIC'),
+  C('F01','field','The “IT Closet”','A broom closet. Containing bleach, mops, a microwave, and the company’s core router.','CLASSIC'),
+  C('F02','field','The Ceiling Tile Waterfall','You lift one tile. One gallon of historic rainwater chooses your shoulder.','CURSED'),
+  C('F03','field','The Helpful Manager','“The internet has never worked right since we painted the walls.”','CLASSIC'),
+  C('F04','field','The Accidental UPS Test','Someone plugs the floor buffer into the “spare” outlet. The server room goes silent.','CRITICAL'),
+  C('F05','field','Unmarked Fiber: Surprise Edition','The cable is orange, the label is handwritten, the splice is inside a plastic sandwich bag.','CRITICAL'),
+  C('F06','field','The Ladder Teleportation Event','You arrive with a ladder. You turn around for five seconds. A different contractor has borrowed it.','CURSED'),
+  C('F07','field','The Port That Wasn’t','You spend an hour tracing patch panel port 23. The patch panel only has 22 ports.','CLASSIC'),
+  C('F08','field','The Sacred Zip Tie','A 90-pound bundle of patch cables has been zip-tied into a load-bearing braid around the rack door.','CURSED'),
+  C('F09','field','MDF Temperature: Tropical','Two switches, one firewall, no airflow, and a space heater pointed directly at the rack.','CRITICAL'),
+  C('F10','field','Remote Hands, Remote Clues','Engineer: “Can you press the blinking button?” Every button is blinking.','CLASSIC'),
+];
+
+const LABELS = INCIDENTS.filter(item => item.category === 'labels').map(item => item.title);
+
+const TICKET_PARTS = {
+  customer: ['A national retail chain', 'An anonymous enterprise', 'A very urgent regional manager', 'An office that insists it has an IT department', 'A store whose ISP is “the blue cable”'],
+  heading: ['Quick cabling adjustment', 'One simple router swap', 'Routine MDF cleanup', 'Emergency AP replacement', 'Small site survey', 'Basic switch troubleshooting'],
+  location: ['behind an industrial freezer', 'above a 23-foot suspended ceiling', 'in a closet without a key', 'across four separate buildings', 'in a rack surrounded by holiday decorations'],
+  surprise: ['All original cable labels are written in pencil.', 'The NOC has the wrong store number.', 'The manager insists the rack does not exist.', 'The replacement equipment arrives tomorrow.', 'The access window ended eleven minutes ago.', 'You are instructed not to interrupt the network, including for testing.'],
+  signoff: ['Provide 47 closeout photos.', 'Obtain signatures from three unavailable managers.', 'Upload the same PDF to four unrelated portals.', 'Remain on the bridge call until someone says the magic word “resolved.”', 'Supply a cable certification report for a cable you were told not to touch.'],
+  pay: ['$55 flat, including travel', '$80 with a $25 fee', '“Competitive rate” to be disclosed after arrival', '$110, net whenever', 'One-hour maximum at $40', '$45 plus “valuable experience”'],
+};
+
+const BINGO_PHRASES = [
+  '“While you’re there…”','Site contact not onsite','No ladder provided','The NOC is on mute','“Just five minutes”',
+  'Store number is wrong','Port label says “DATA”','Three different portals','Missing replacement part','“Don’t touch anything”',
+  'Required photo rejected','No parking available','Ceiling is full of surprises','Scope changed after arrival','Hold music, 45 minutes',
+  'Cable tester out of battery','Manager cannot sign','“Did you reboot it?”','The rack is behind boxes','“IT said it’s simple”',
+  'Unpaid extra drive','Missing access key','“We have another ticket”','Only blue cables','As-built does not exist',
+  'Work order expired','“It worked yesterday”','Wrong site address','Photos need GPS','Everyone needs the same PDF',
+  'Nobody owns the ticket','Patch panel mystery','POE injector archaeology','The tech before you “fixed” it','No approved change order',
+];
+
+const PORTALS = [
+  { name: 'Prime Contractor Portal', wants: '16 completion photos, exactly .jpg, lowercase extension', fail: 'Rejected: photo 7 was named .JPG instead of .jpg.' },
+  { name: 'National Aggregator Portal', wants: 'The same 16 photos in a different order', fail: 'Rejected: this system does not accept the order accepted by the previous system.' },
+  { name: 'Regional Dispatch Console', wants: 'Arrival and departure times typed manually', fail: 'Rejected: “3:45 PM” must be entered as “15:45.”' },
+  { name: 'Mystery Subcontractor Portal', wants: 'Signed worksheet from a manager who left at noon', fail: 'Rejected: signature on page 2 is 4 pixels outside the box.' },
+  { name: 'QA Department of QA', wants: 'Photos proving that you took the photos', fail: 'Rejected: metadata indicates a device newer than 2019.' },
+  { name: 'Client Verification Gateway', wants: 'Same serial numbers, this time without hyphens', fail: 'Rejected: your serial numbers match too accurately. Manual review required.' },
+  { name: 'Final Closeout / Final-FINAL', wants: 'Everything from all six portals in a single PDF', fail: 'Rejected: document name is FINAL.pdf, required FINAL_FINAL.pdf.' },
+];
+
+/** Original, dependency-free calculations shared by the site and unit tests. */
+function hasBingo(marked) {
+  const set = new Set(marked);
+  for (let row = 0; row < 5; row++) {
+    if ([0, 1, 2, 3, 4].every(col => set.has(row * 5 + col))) return true;
+  }
+  for (let col = 0; col < 5; col++) {
+    if ([0, 1, 2, 3, 4].every(row => set.has(row * 5 + col))) return true;
+  }
+  return [0, 6, 12, 18, 24].every(index => set.has(index)) ||
+         [4, 8, 12, 16, 20].every(index => set.has(index));
+}
+
+function calculateEffectivePay({ offered, onsite, travel, paperwork, expenses, fees }) {
+  const values = [offered, onsite, travel, paperwork, expenses, fees];
+  if (values.some(value => !Number.isFinite(value) || value < 0)) {
+    throw new RangeError('Pay and time inputs must be finite and non-negative.');
+  }
+  const hours = onsite + travel + paperwork;
+  const remaining = offered - expenses - fees;
+  return { hours, remaining, hourly: hours > 0 ? remaining / hours : null };
+}
+
+
+
+const $ = (selector) => document.querySelector(selector);
+const el = (tag, className = '', content = undefined) => {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (content !== undefined) node.textContent = String(content);
+  return node;
+};
+const getJson = (key, fallback) => {
+  try { const item = localStorage.getItem(key); return item ? JSON.parse(item) : fallback; }
+  catch { return fallback; }
+};
+const saveJson = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
+const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const randomInt = (max) => Math.floor(Math.random() * max);
+const shuffled = (items) => {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = randomInt(i + 1);
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+};
+let toastTimer;
+function toast(message) {
+  const node = $('#toast');
+  node.textContent = message;
+  node.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { node.hidden = true; }, 3200);
+}
+async function copyText(value) {
+  try {
+    await navigator.clipboard.writeText(value);
+    toast('COPIED TO CLIPBOARD ✓');
+  } catch {
+    toast('COPY BLOCKED BY BROWSER. SELECT THE TEXT INSTEAD.');
+  }
+}
+function saveFile(content, name, type) {
+  const href = URL.createObjectURL(new Blob([content], { type }));
+  const link = el('a'); link.href = href; link.download = name;
+  document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(href), 15000);
+}
+const categoryLabel = Object.fromEntries(CATEGORIES.map(cat => [cat.id, cat.label]));
+const state = { category: 'all', query: '', favoritesOnly: false, pageSize: 12 };
+const storedFavoriteIds = getJson('mdf-favorites-v1', []);
+const favorites = new Set(Array.isArray(storedFavoriteIds) ? storedFavoriteIds.filter(item => typeof item === 'string') : []);
+let localReports = getJson('mdf-reports-v1', []);
+if (!Array.isArray(localReports)) localReports = [];
+localReports = localReports.filter(report => report && typeof report.id === 'string' && CATEGORIES.some(cat => cat.id === report.category) && typeof report.title === 'string' && typeof report.body === 'string').slice(0, 200);
+function allIncidents() { return [...localReports, ...INCIDENTS]; }
+
+function buildFilters() {
+  const container = $('#filters');
+  const buttons = [{ id: 'all', label: 'All reports', icon: '◉' }, ...CATEGORIES];
+  container.replaceChildren(...buttons.map(cat => {
+    const button = el('button', 'filter-pill', `${cat.icon} ${cat.label}`);
+    button.type = 'button';
+    button.dataset.category = cat.id;
+    button.setAttribute('aria-pressed', String(cat.id === state.category));
+    button.addEventListener('click', () => {
+      state.category = cat.id; state.pageSize = 12;
+      updateFilters(); renderIncidents();
+    });
+    return button;
+  }));
+}
+function updateFilters() {
+  document.querySelectorAll('[data-category]').forEach(button => {
+    if (button.matches('.filter-pill')) button.setAttribute('aria-pressed', String(button.dataset.category === state.category));
+  });
+}
+function makeIncidentCard(item) {
+  const card = el('article', 'incident-card');
+  const top = el('div', 'incident-top');
+  top.append(el('span', 'incident-code', `FILE ${item.id}`), el('span', `severity ${item.severity === 'CRITICAL' ? 'sev-red' : item.severity === 'CLASSIC' ? 'sev-green' : 'sev-yellow'}`, item.severity));
+  const body = el('div', 'incident-body');
+  const category = el('span', 'incident-category', categoryLabel[item.category] ?? 'Field report');
+  const title = el('h3', '', item.title);
+  const description = el('p', '', item.body);
+  body.append(category, title, description);
+  const bottom = el('div', 'incident-bottom');
+  const copy = el('button', 'card-action', '⧉ COPY'); copy.type = 'button'; copy.setAttribute('aria-label', `Copy ${item.title}`);
+  copy.addEventListener('click', () => void copyText(`${item.title}\n${item.body}\n\nTHE MDF FILES · Fictional satire`));
+  const star = el('button', 'star-action', favorites.has(item.id) ? '★' : '☆');
+  star.type = 'button'; star.setAttribute('aria-pressed', String(favorites.has(item.id))); star.setAttribute('aria-label', `Save ${item.title} to favorites`);
+  star.addEventListener('click', () => {
+    if (favorites.has(item.id)) favorites.delete(item.id); else favorites.add(item.id);
+    saveJson('mdf-favorites-v1', [...favorites]);
+    $('#favorite-count').textContent = String(favorites.size);
+    renderIncidents();
+  });
+  bottom.append(copy, star);
+  if (item.local) {
+    const remove = el('button', 'remove-report', '×');
+    remove.type = 'button'; remove.title = 'Delete local report'; remove.setAttribute('aria-label', `Delete local report ${item.title}`);
+    remove.addEventListener('click', () => {
+      if (!window.confirm('Remove this local report?')) return;
+      localReports = localReports.filter(report => report.id !== item.id);
+      favorites.delete(item.id);
+      saveJson('mdf-favorites-v1', [...favorites]);
+      saveJson('mdf-reports-v1', localReports);
+      $('#favorite-count').textContent = String(favorites.size);
+      renderIncidents(); toast('LOCAL REPORT REMOVED.');
+    });
+    bottom.append(remove);
+  }
+  card.append(top, body, bottom);
+  return card;
+}
+function renderIncidents() {
+  const term = state.query.trim().toLocaleLowerCase();
+  const filtered = allIncidents().filter(item =>
+    (state.category === 'all' || item.category === state.category) &&
+    (!state.favoritesOnly || favorites.has(item.id)) &&
+    (!term || `${item.title} ${item.body} ${item.category}`.toLocaleLowerCase().includes(term))
+  );
+  $('#results-count').textContent = `${filtered.length} FICTIONAL REPORT${filtered.length === 1 ? '' : 'S'} FOUND`;
+  const grid = $('#incident-grid');
+  grid.replaceChildren(...filtered.slice(0, state.pageSize).map(makeIncidentCard));
+  if (!filtered.length) {
+    const blank = el('div', 'empty-results'); blank.append(el('strong', '', 'NO EVIDENCE FOUND'), el('p', '', 'Adjust the filters. Or perhaps the paperwork ate it.'));
+    grid.append(blank);
+  }
+  const more = $('#show-more');
+  more.hidden = filtered.length <= state.pageSize;
+  more.textContent = `LOAD MORE REPORTS (${filtered.length - state.pageSize} REMAIN) ↓`;
+}
+buildFilters();
+$('#favorite-count').textContent = String(favorites.size);
+$('#search').addEventListener('input', (e) => { state.query = e.target.value; state.pageSize = 12; renderIncidents(); });
+$('#favorites-toggle').addEventListener('click', () => {
+  state.favoritesOnly = !state.favoritesOnly;
+  $('#favorites-toggle').setAttribute('aria-pressed', String(state.favoritesOnly));
+  state.pageSize = 12; renderIncidents();
+});
+$('#show-more').addEventListener('click', () => { state.pageSize += 12; renderIncidents(); });
+renderIncidents();
+
+// The label lab: custom labels use textContent, never HTML insertion.
+let activeLabel = 'TRUST ME BRO';
+function setLabel(message) {
+  activeLabel = String(message).trim().slice(0, 50) || 'TRUST ME BRO';
+  $('#label-output').textContent = activeLabel;
+  $('#print-label-text').textContent = activeLabel;
+  $('#label-id').textContent = String(randomInt(9999) + 1).padStart(4, '0');
+}
+$('#custom-label').addEventListener('input', (event) => setLabel(event.target.value || 'TRUST ME BRO'));
+$('#label-random').addEventListener('click', () => { const message = pick(LABELS.filter(x => x !== activeLabel)); $('#custom-label').value = ''; setLabel(message); });
+$('#label-copy').addEventListener('click', () => void copyText(activeLabel));
+$('#label-print').addEventListener('click', () => window.print());
+
+// Ticket generator, with every combination fictional.
+let ticket = null;
+function generateTicket() {
+  ticket = {
+    id: `#${randomInt(900) + 100}-${String(randomInt(9000) + 1000)}`,
+    heading: pick(TICKET_PARTS.heading), customer: pick(TICKET_PARTS.customer),
+    location: pick(TICKET_PARTS.location), surprise: pick(TICKET_PARTS.surprise),
+    signoff: pick(TICKET_PARTS.signoff), pay: pick(TICKET_PARTS.pay),
+  };
+  for (const key of ['id', 'heading', 'customer', 'location', 'surprise', 'signoff', 'pay']) $(`#ticket-${key}`).textContent = ticket[key];
+}
+$('#ticket-generate').addEventListener('click', generateTicket);
+$('#ticket-copy').addEventListener('click', () => { if (ticket) void copyText(`THE MDF FILES // FICTIONAL WORK ORDER ${ticket.id}\n${ticket.heading}\nCustomer: ${ticket.customer}\nLocation: ${ticket.location}\nUpon arrival: ${ticket.surprise}\nCloseout: ${ticket.signoff}\nCompensation: ${ticket.pay}`); });
+generateTicket();
+
+// Bingo intentionally keeps the FREE center square, and persists per-browser.
+const storedBingo = getJson('mdf-bingo-v1', null);
+let bingo = storedBingo && Array.isArray(storedBingo.phrases) && storedBingo.phrases.length === 24 && Array.isArray(storedBingo.marked) && storedBingo.marked.every(i => Number.isInteger(i) && i >= 0 && i < 25)
+  ? storedBingo : { phrases: shuffled(BINGO_PHRASES).slice(0, 24), marked: [12] };
+function cells() { const values = [...bingo.phrases]; values.splice(12, 0, 'FREE SPACE\n(AND IT’S STILL BILLABLE)'); return values; }
+function renderBingo() {
+  const grid = $('#bingo-grid');
+  grid.replaceChildren(...cells().map((phrase, index) => {
+    const button = el('button', `bingo-cell ${bingo.marked.includes(index) ? 'marked' : ''} ${index === 12 ? 'free' : ''}`, phrase);
+    button.type = 'button'; button.setAttribute('aria-pressed', String(bingo.marked.includes(index))); button.setAttribute('aria-label', `${phrase.replace(/\n/g, ' ')}: ${bingo.marked.includes(index) ? 'marked' : 'unmarked'}`);
+    button.addEventListener('click', () => {
+      if (index === 12) return;
+      bingo.marked = bingo.marked.includes(index) ? bingo.marked.filter(i => i !== index) : [...bingo.marked, index];
+      saveJson('mdf-bingo-v1', bingo); renderBingo();
+    });
+    return button;
+  }));
+  const n = bingo.marked.length - 1;
+  $('#bingo-count').firstChild.textContent = String(n);
+  const won = hasBingo(bingo.marked);
+  $('#bingo-earned').hidden = !won;
+  $('#bingo-message').textContent = won ? 'FIVE IN A ROW. Your prize: another dispatch call.' : n === 0 ? 'A fresh card. So much hope. So little reason.' : n >= 15 ? 'You have seen things no technician should see.' : n >= 7 ? 'The paperwork has begun to recognize your face.' : 'Every marked square is another reason to bring snacks.';
+}
+$('#bingo-new').addEventListener('click', () => { bingo = { phrases: shuffled(BINGO_PHRASES).slice(0,24), marked:[12] }; saveJson('mdf-bingo-v1', bingo); renderBingo(); });
+$('#bingo-reset').addEventListener('click', () => { bingo.marked = [12]; saveJson('mdf-bingo-v1', bingo); renderBingo(); });
+renderBingo();
+
+// Calculator includes time and direct costs but not taxes or business overhead.
+const currency = (value) => new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:2 }).format(value);
+function calculatePay(event) {
+  if (event) event.preventDefault();
+  const number = key => Number($(`#pay-${key}`).value);
+  const pay = number('offer'), onsite = number('onsite'), travel = number('travel'), paperwork = number('paperwork'), expenses = number('expenses'), fees = number('fees');
+  if ([pay, onsite, travel, paperwork, expenses, fees].some(n => !Number.isFinite(n) || n < 0)) { toast('ENTER VALID NON-NEGATIVE NUMBERS.'); return; }
+  let hours, net, rate;
+  try {
+    ({ hours, remaining: net, hourly: rate } = calculateEffectivePay({ offered: pay, onsite, travel, paperwork, expenses, fees }));
+  } catch { toast('ENTER VALID NON-NEGATIVE NUMBERS.'); return; }
+  if (hours === 0) { $('#pay-hourly').replaceChildren(document.createTextNode('—'), el('span', '', '/hr')); $('#pay-verdict').textContent = 'Add at least some hours to calculate a rate.'; }
+  else {
+    $('#pay-hourly').replaceChildren(document.createTextNode(currency(rate)), el('span', '', '/hr'));
+    $('#pay-verdict').textContent = rate < 0 ? 'You are paying for the privilege of completing their ticket.' : rate < 10 ? 'The cable spool may have negotiated a better rate.' : rate < 25 ? 'That “easy job” is starting to look suspicious.' : rate < 50 ? 'At least the calculator didn’t immediately call for help.' : 'Not bad. Just make sure the scope doesn’t triple on arrival.';
+  }
+  $('#pay-net').textContent = currency(net);
+  $('#pay-hours').textContent = `${Math.round(hours * 100) / 100} hrs`;
+}
+$('#pay-form').addEventListener('submit', calculatePay);
+calculatePay();
+
+// Gauntlet: odd-indexed stages reject once before accepting; this is deterministic.
+let gauntlet = { stage: -1, rejections: 0, rejectedStages: new Set() };
+function renderGauntlet() {
+  const stage = gauntlet.stage;
+  $('#gauntlet-stage-number').textContent = `${String(Math.max(0, stage + 1)).padStart(2, '0')} / 07`;
+  const track = $('#gauntlet-track');
+  track.replaceChildren(...PORTALS.map((_p, index) => {
+    const node = el('span', `progress-bar ${index < stage ? 'passed' : index === stage ? 'current' : ''}`);
+    node.title = PORTALS[index].name;
+    return node;
+  }));
+  $('#gauntlet-rejections').textContent = `REJECTIONS: ${gauntlet.rejections}`;
+  const next = $('#gauntlet-next');
+  if (stage === -1) {
+    $('#gauntlet-title').textContent = 'READY TO BEGIN THE SUFFERING?';
+    $('#gauntlet-portal').textContent = 'No portal selected';
+    $('#gauntlet-requirement').textContent = 'Please submit your existence for verification.';
+    $('#gauntlet-feedback').textContent = 'Each portal must be satisfied. Certain steps require resubmission for completely arbitrary reasons.';
+    next.textContent = 'BEGIN CLOSEOUT ↗'; next.disabled = false;
+  } else if (stage >= PORTALS.length) {
+    $('#gauntlet-title').textContent = 'FINALLY APPROVED. MAYBE.';
+    $('#gauntlet-portal').textContent = 'INVOICE PROCESSING DEPARTMENT';
+    $('#gauntlet-requirement').textContent = 'Your completion packet has been accepted.';
+    $('#gauntlet-feedback').textContent = `You survived ${gauntlet.rejections} completely invented rejections. Estimated payment arrival: after the next corporate reorganization.`;
+    next.textContent = 'APPROVED ✓'; next.disabled = true;
+  } else {
+    const portal = PORTALS[stage];
+    $('#gauntlet-title').textContent = 'PACKET UNDER REVIEW...';
+    $('#gauntlet-portal').textContent = portal.name;
+    $('#gauntlet-requirement').textContent = portal.wants;
+    if (!$('#gauntlet-feedback').dataset.rejected || $('#gauntlet-feedback').dataset.rejected !== String(stage)) $('#gauntlet-feedback').textContent = 'Ready for submission. The portal appears calm. This is concerning.';
+    next.textContent = gauntlet.rejectedStages.has(stage) ? 'RESUBMIT IDENTICAL PACKET ↗' : 'SUBMIT PACKET ↗';
+    next.disabled = false;
+  }
+}
+$('#gauntlet-next').addEventListener('click', () => {
+  if (gauntlet.stage === -1) { gauntlet.stage = 0; $('#gauntlet-feedback').dataset.rejected = ''; }
+  else if (gauntlet.stage < PORTALS.length) {
+    const index = gauntlet.stage;
+    if (index % 2 === 0 && !gauntlet.rejectedStages.has(index)) {
+      gauntlet.rejectedStages.add(index); gauntlet.rejections++;
+      $('#gauntlet-feedback').dataset.rejected = String(index);
+      renderGauntlet();
+      $('#gauntlet-feedback').textContent = '✕ ' + PORTALS[index].fail;
+      return;
+    }
+    gauntlet.stage++; $('#gauntlet-feedback').dataset.rejected = '';
+  }
+  renderGauntlet();
+});
+$('#gauntlet-restart').addEventListener('click', () => { gauntlet = { stage:-1,rejections:0,rejectedStages:new Set() }; $('#gauntlet-feedback').dataset.rejected = ''; renderGauntlet(); });
+renderGauntlet();
+
+$('#report-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const title = $('#report-title').value.trim();
+  const body = $('#report-body').value.trim();
+  const category = $('#report-category').value;
+  if (title.length < 3 || body.length < 10 || !CATEGORIES.some(cat => cat.id === category)) { toast('PLEASE COMPLETE THE FICTIONAL INCIDENT REPORT.'); return; }
+  if (localReports.length >= 200) { toast('LOCAL ARCHIVE FULL. EXPORT YOUR STORIES FIRST.'); return; }
+  const report = { id: `U${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, category, title: title.slice(0,80), body: body.slice(0,300), severity: 'CLASSIC', local:true };
+  localReports.unshift(report);
+  if (!saveJson('mdf-reports-v1', localReports)) { localReports.shift(); $('#report-status').textContent = 'Browser storage unavailable. Try another browser.'; return; }
+  $('#report-form').reset();
+  $('#report-status').textContent = '✓ SAVED ON THIS DEVICE ONLY. YOU CAN EXPORT YOUR LOCAL REPORTS.';
+  state.category = 'all'; state.query = ''; state.favoritesOnly = false; state.pageSize = 12; $('#search').value = ''; $('#favorites-toggle').setAttribute('aria-pressed','false'); updateFilters(); renderIncidents(); toast('YOUR FICTIONAL REPORT ENTERED THE ARCHIVE.');
+});
+$('#report-export').addEventListener('click', () => {
+  const payload = { format:'the-mdf-files-local-stories', version:1, exportedAt:new Date().toISOString(), reports:localReports };
+  saveFile(JSON.stringify(payload, null, 2), 'mdf-files-my-stories.json', 'application/json');
+  toast('LOCAL REPORTS EXPORTED.');
+});
+
+</script>
+</body>
+</html>
